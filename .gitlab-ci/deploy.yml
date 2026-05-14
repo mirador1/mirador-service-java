@@ -2,6 +2,18 @@
 # Phase B-2 CI modularisation (ADR-0050). Contains: .terraform-base, terraform-plan, terraform-apply, .kubectl-apply, deploy, deploy, deploy, deploy, deploy.
 # The parent `.gitlab-ci.yml` keeps only workflow/stages/default/
 # variables/cache/include. See docs/adr/0050-ci-yaml-modularisation-plan.md.
+#
+# ── allow_failure: true on deploy:* jobs — pattern documented here once ─────
+# Every deploy:* target (EKS, AKS, Cloud Run, Fly, K3s, OVH) carries
+# `when: manual + allow_failure: true`. Rationale per ADR-0049 :
+#   - OPT-IN production deploys ; clicking deploy:fly should not block
+#     deploy:eks or downstream pipeline-success.
+#   - Cloud provider errors (quota, auth, transient infra) shouldn't fail
+#     the entire main pipeline — they should signal that specific target.
+#   - Failure is still visible : ⚠️ in the pipeline view + MR widget + email.
+# Exit ticket : remove `allow_failure: true` per target IF that target
+# becomes a primary production deploy (currently only GKE — line 119 — has
+# its own inline justification).
 
 .terraform-base:
   stage: infra
