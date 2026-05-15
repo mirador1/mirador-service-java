@@ -153,11 +153,11 @@ class KafkaConfigTest {
 
         // Build a minimal ProducerRecord context — only the key/value tags
         // we read in the assertions matter ; the convention is pure on the
-        // record's name + headers.
-        var record = new org.apache.kafka.clients.producer.ProducerRecord<>(
+        // rec's name + headers.
+        var rec = new org.apache.kafka.clients.producer.ProducerRecord<>(
                 "customer.created", "key-1", (Object) "payload");
         var ctx = new org.springframework.kafka.support.micrometer.KafkaRecordSenderContext(
-                record, "customer.created", () -> BROKERS);
+                rec, "customer.created", () -> BROKERS);
 
         var keyValues = convention.getLowCardinalityKeyValues(ctx);
         assertThat(keyValues).extracting(io.micrometer.common.KeyValue::getKey)
@@ -177,10 +177,10 @@ class KafkaConfigTest {
                 .getObservationConvention();
         assertThat(convention).isNotNull();
 
-        var record = new org.apache.kafka.clients.consumer.ConsumerRecord<>(
+        var rec = new org.apache.kafka.clients.consumer.ConsumerRecord<>(
                 "customer.created", 0, 0L, "k", (Object) "v");
         var ctx = new org.springframework.kafka.support.micrometer.KafkaRecordReceiverContext(
-                record, "consumer-id", () -> BROKERS);
+                rec, "consumer-id", () -> BROKERS);
 
         var keyValues = convention.getLowCardinalityKeyValues(ctx);
         assertThat(keyValues).extracting(io.micrometer.common.KeyValue::getKey)
@@ -208,10 +208,10 @@ class KafkaConfigTest {
                 template, "observationConvention");
         assertThat(convention).isNotNull();
 
-        var record = new org.apache.kafka.clients.producer.ProducerRecord<>(
+        var rec = new org.apache.kafka.clients.producer.ProducerRecord<>(
                 "customer.request", "key", (Object) "request-payload");
         var ctx = new org.springframework.kafka.support.micrometer.KafkaRecordSenderContext(
-                record, "customer.request", () -> BROKERS);
+                rec, "customer.request", () -> BROKERS);
 
         var keyValues = convention.getLowCardinalityKeyValues(ctx);
         assertThat(keyValues).extracting(io.micrometer.common.KeyValue::getKey)
@@ -230,10 +230,10 @@ class KafkaConfigTest {
                 .getObservationConvention();
         assertThat(convention).isNotNull();
 
-        var record = new org.apache.kafka.clients.consumer.ConsumerRecord<>(
+        var rec = new org.apache.kafka.clients.consumer.ConsumerRecord<>(
                 "customer.reply", 0, 0L, "k", (Object) "v");
         var ctx = new org.springframework.kafka.support.micrometer.KafkaRecordReceiverContext(
-                record, "reply-consumer", () -> BROKERS);
+                rec, "reply-consumer", () -> BROKERS);
 
         var keyValues = convention.getLowCardinalityKeyValues(ctx);
         assertThat(keyValues).extracting(io.micrometer.common.KeyValue::getValue)
