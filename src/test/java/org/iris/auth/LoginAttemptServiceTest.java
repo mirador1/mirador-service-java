@@ -74,7 +74,7 @@ class LoginAttemptServiceTest {
 
     @Test
     void remainingAttempts_neverNegative() {
-        // record more failures than the max
+        // rec more failures than the max
         for (int i = 0; i < LoginAttemptService.MAX_ATTEMPTS + 3; i++) {
             service.recordFailure("flood");
         }
@@ -98,7 +98,7 @@ class LoginAttemptServiceTest {
     @Test
     void isBlocked_lockoutExpired_autoRemovesRecord_andReturnsFalse() throws Exception {
         // Pinned : when an IP's lockedUntil is in the past, isBlocked
-        // returns false AND removes the record from memory. Without
+        // returns false AND removes the rec from memory. Without
         // the auto-expire, locked-out clients that abandon their
         // request would leave records pinned forever — unbounded map
         // growth / DoS amplification surface.
@@ -119,8 +119,8 @@ class LoginAttemptServiceTest {
         Class<?> recordClass = Class.forName("org.iris.auth.LoginAttemptService$AttemptRecord");
         Constructor<?> ctor = recordClass.getDeclaredConstructor(int.class, Instant.class, Instant.class);
         ctor.setAccessible(true);
-        Object record = ctor.newInstance(count, Instant.now(), lockedUntil);
-        attemptsMap().put(ip, record);
+        Object rec = ctor.newInstance(count, Instant.now(), lockedUntil);
+        attemptsMap().put(ip, rec);
     }
 
     @SuppressWarnings("unchecked")

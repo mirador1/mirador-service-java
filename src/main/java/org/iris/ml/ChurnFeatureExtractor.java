@@ -88,14 +88,14 @@ public class ChurnFeatureExtractor {
         int domainClass = classifyEmailDomain(customer.getEmail());
 
         return new float[] {
-                (float) daysSinceLast,
+                daysSinceLast,  // long → float implicit widening (Sonar S1905)
                 (float) rev30,
                 (float) rev90,
                 (float) rev365,
                 (float) frequency,
                 (float) diversity,
-                (float) domainClass,
-                (float) lifetimeDays,
+                domainClass,    // int → float implicit widening (Sonar S1905)
+                lifetimeDays,   // long → float implicit widening (Sonar S1905)
         };
     }
 
