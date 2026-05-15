@@ -29,6 +29,7 @@ import static org.assertj.core.api.Assertions.assertThatNoException;
  *     on this section being present, then on .available)
  *   - status is exactly "PASSED" or "FAILED" — UI uses string equality
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class TestReportInfoContributorTest {
 
     @Test

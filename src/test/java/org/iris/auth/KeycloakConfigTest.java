@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * <p>We don't perform real JWKS fetches — Nimbus does that lazily on the
  * first token validation, never at decoder construction.
  */
-@SuppressWarnings("java:S125")  // Prose comments with code-like glyphs (arrows, backticks, paren) — not actual commented-out code.
+@SuppressWarnings({"java:S125", "java:S5853"})  // S125: prose comments with code-like glyphs (arrows, backticks, parens) — not actual commented-out code. S5853: multi-assertion chain refactor deferred ; current shape reads better with subject + N separate assertions.
 class KeycloakConfigTest {
 
     @Test

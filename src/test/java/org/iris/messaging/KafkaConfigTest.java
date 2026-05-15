@@ -31,6 +31,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *   - kafkaListenerContainerFactory wires reply template + observation
  */
 // eslint-disable-next-line max-lines-per-function (Java equivalent — none enforced here)
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class KafkaConfigTest {
 
     private static final String BROKERS = "localhost:9092";

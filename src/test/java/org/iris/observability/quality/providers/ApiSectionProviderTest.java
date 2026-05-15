@@ -28,7 +28,7 @@ import static org.mockito.Mockito.when;
  *   - endpoints sorted by path asc (stable dashboard order)
  *   - handler = ClassSimpleName.methodName (used as the dashboard label)
  */
-@SuppressWarnings("java:S125")  // Prose comments with code-like glyphs (arrows, backticks, paren) — not actual commented-out code.
+@SuppressWarnings({"java:S125", "java:S5853"})  // S125: prose comments with code-like glyphs (arrows, backticks, parens) — not actual commented-out code. S5853: multi-assertion chain refactor deferred ; current shape reads better with subject + N separate assertions.
 class ApiSectionProviderTest {
 
     private static Method sampleMethod() throws NoSuchMethodException {

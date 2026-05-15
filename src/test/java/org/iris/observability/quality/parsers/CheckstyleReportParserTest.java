@@ -15,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * info), and 3 different checker classes (MissingJavadocMethodCheck,
  * MagicNumberCheck, CyclomaticComplexityCheck).
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class CheckstyleReportParserTest {
 
     private final CheckstyleReportParser parser = new CheckstyleReportParser();

@@ -27,6 +27,7 @@ import static org.mockito.Mockito.when;
  * CSV export header + payload shape, including the embedded-quote
  * escaping that the export does inline.
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class CustomerDiagnosticsControllerTest {
 
     private CustomerService service;

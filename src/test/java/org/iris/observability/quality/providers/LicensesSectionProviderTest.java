@@ -19,6 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *   <li>Two malformed lines (no paren / no coordinates) — must be skipped</li>
  * </ul>
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class LicensesSectionProviderTest {
 
     private final LicensesSectionProvider provider = new LicensesSectionProvider();

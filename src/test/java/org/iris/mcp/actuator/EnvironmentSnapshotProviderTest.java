@@ -27,6 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *   <li>Non-enumerable sources are skipped silently.</li>
  * </ul>
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class EnvironmentSnapshotProviderTest {
 
     private static StandardEnvironment env(PropertySource<?>... sources) {

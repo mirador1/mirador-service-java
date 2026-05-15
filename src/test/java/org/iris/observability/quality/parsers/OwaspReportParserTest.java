@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * UI-displayable strings. The full {@code parse()} method reads files
  * from disk and is exercised separately by the smoke test.
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class OwaspReportParserTest {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();

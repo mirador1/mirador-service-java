@@ -19,6 +19,7 @@ import static org.mockito.Mockito.verify;
  * allowlist that prevents arbitrary SQL execution via the
  * {@code operation} parameter.
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class MaintenanceEndpointTest {
 
     private JdbcTemplate jdbc;
