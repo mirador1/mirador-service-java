@@ -161,7 +161,7 @@ class OrderLineControllerCrudTest {
         ResponseEntity<Void> response = controller.delete(100L, 999L);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-        verify(lineRepo, never()).deleteById(eq(999L));
+        verify(lineRepo, never()).deleteById(999L);
         verify(orderRepo, never()).save(any(Order.class));
     }
 

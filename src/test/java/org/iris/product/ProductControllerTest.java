@@ -137,7 +137,7 @@ class ProductControllerTest {
         // tell "no orders yet" from "wrong product id".
         when(repo.existsById(7L)).thenReturn(true);
         Pageable pageable = PageRequest.of(0, 20);
-        when(orderRepo.findByProductId(eq(7L), eq(pageable)))
+        when(orderRepo.findByProductId(7L, pageable))
                 .thenReturn(new PageImpl<>(List.of(), pageable, 0));
 
         ResponseEntity<Page<OrderDto>> response = controller.ordersForProduct(7L, pageable);
@@ -157,7 +157,7 @@ class ProductControllerTest {
         Order o1 = orderFixture(101L, 1L, OrderStatus.SHIPPED, new BigDecimal("199.98"));
         Order o2 = orderFixture(102L, 2L, OrderStatus.PENDING, new BigDecimal("49.99"));
         Pageable pageable = PageRequest.of(0, 20);
-        when(orderRepo.findByProductId(eq(3L), eq(pageable)))
+        when(orderRepo.findByProductId(3L, pageable))
                 .thenReturn(new PageImpl<>(List.of(o1, o2), pageable, 2));
 
         ResponseEntity<Page<OrderDto>> response = controller.ordersForProduct(3L, pageable);
@@ -179,12 +179,12 @@ class ProductControllerTest {
         // @PageableDefault on the @GetMapping handles the no-param case.
         when(repo.existsById(5L)).thenReturn(true);
         Pageable pageable = PageRequest.of(2, 50);
-        when(orderRepo.findByProductId(eq(5L), eq(pageable)))
+        when(orderRepo.findByProductId(5L, pageable))
                 .thenReturn(new PageImpl<>(List.of(), pageable, 0));
 
         controller.ordersForProduct(5L, pageable);
 
-        verify(orderRepo).findByProductId(eq(5L), eq(pageable));
+        verify(orderRepo).findByProductId(5L, pageable);
     }
 
     // ─── helpers ──────────────────────────────────────────────────────────────

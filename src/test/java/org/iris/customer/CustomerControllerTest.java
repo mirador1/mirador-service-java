@@ -104,7 +104,7 @@ class CustomerControllerTest {
     void update_delegatesToServiceWithIdAndRequest() {
         CreateCustomerRequest req = new CreateCustomerRequest("Bob", "bob@example.com");
         CustomerDto updated = new CustomerDto(7L, "Bob", "bob@example.com");
-        when(service.update(eq(7L), eq(req))).thenReturn(updated);
+        when(service.update(7L, req)).thenReturn(updated);
 
         CustomerDto result = controller.update(7L, req);
 
@@ -127,7 +127,7 @@ class CustomerControllerTest {
     void patch_delegatesToServiceWithIdAndPatchRequest() {
         PatchCustomerRequest req = new PatchCustomerRequest("New name", null);
         CustomerDto patched = new CustomerDto(3L, "New name", "old@example.com");
-        when(service.patch(eq(3L), eq(req))).thenReturn(patched);
+        when(service.patch(3L, req)).thenReturn(patched);
 
         CustomerDto result = controller.patch(3L, req);
 
