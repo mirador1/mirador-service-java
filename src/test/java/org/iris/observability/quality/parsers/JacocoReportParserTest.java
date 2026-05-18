@@ -15,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Coverage shape: AliceController (90%), BobService (50%), CarolHelper
  * (0%), RootClass (80%) — totals + per-package aggregation pinned.
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class JacocoReportParserTest {
 
     private final JacocoReportParser parser = new JacocoReportParser();

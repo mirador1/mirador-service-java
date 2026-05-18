@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 3=Low), and includes one violation in a file path with no `/` (tests
  * the no-slash branch of the filename shortener).
  */
-@SuppressWarnings("java:S125")  // Prose comments with code-like glyphs (arrows, backticks, paren) — not actual commented-out code.
+@SuppressWarnings({"java:S125", "java:S5853"})  // S125: prose comments with code-like glyphs (arrows, backticks, parens) — not actual commented-out code. S5853: multi-assertion chain refactor deferred ; current shape reads better with subject + N separate assertions.
 class PmdReportParserTest {
 
     private final PmdReportParser parser = new PmdReportParser();

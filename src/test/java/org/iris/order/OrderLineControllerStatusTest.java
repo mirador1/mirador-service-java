@@ -37,6 +37,7 @@ import static org.mockito.Mockito.when;
  * {@link OrderLineStatus#canTransitionTo} ; this spec only verifies the
  * controller wiring on top.
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class OrderLineControllerStatusTest {
 
     private OrderLineRepository lineRepo;

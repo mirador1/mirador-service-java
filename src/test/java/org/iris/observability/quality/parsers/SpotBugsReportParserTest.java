@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * STYLE), 3 priorities (1=High, 2=Normal, 3=Low), and one entry without
  * a package-qualified class name (tests the fallback branch).
  */
-@SuppressWarnings("java:S125")  // Prose comments with code-like glyphs (arrows, backticks, paren) — not actual commented-out code.
+@SuppressWarnings({"java:S125", "java:S5853"})  // S125: prose comments with code-like glyphs (arrows, backticks, parens) — not actual commented-out code. S5853: multi-assertion chain refactor deferred ; current shape reads better with subject + N separate assertions.
 class SpotBugsReportParserTest {
 
     private final SpotBugsReportParser parser = new SpotBugsReportParser();

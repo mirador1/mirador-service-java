@@ -25,6 +25,7 @@ import static org.mockito.Mockito.when;
  * a minimal fake descriptor so the test does not need the full SB4
  * actuator wiring.
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class ActuatorServiceTest {
 
     private HealthEndpoint healthEndpoint;

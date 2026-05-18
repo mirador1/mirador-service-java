@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * shape (per-package complexity + top-10 + untested classes) so the
  * tests pin distinct invariants.
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class MetricsSectionProviderTest {
 
     private final MetricsSectionProvider provider = new MetricsSectionProvider();

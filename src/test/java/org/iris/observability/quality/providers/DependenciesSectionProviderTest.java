@@ -26,6 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * optional and may produce null on a fresh checkout — handled by the
  * {@code if (treeResult != null)} guards in the provider.
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class DependenciesSectionProviderTest {
 
     private final DependenciesSectionProvider provider = new DependenciesSectionProvider();

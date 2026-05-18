@@ -50,6 +50,7 @@ import static org.mockito.Mockito.when;
  *     conditional on hasNext / hasPrevious
  */
 // eslint-disable-next-line max-lines-per-function
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class CustomerControllerTest {
 
     private CustomerService service;

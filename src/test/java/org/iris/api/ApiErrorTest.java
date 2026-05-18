@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
  * <p>Coverage : was 0% before this commit ; complete the
  * {@code org.iris.api} package to 100%.
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class ApiErrorTest {
 
     @Test

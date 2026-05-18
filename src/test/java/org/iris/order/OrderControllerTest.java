@@ -31,6 +31,7 @@ import static org.mockito.Mockito.when;
  * <p>The state-machine itself is tested separately in {@code OrderStatusTest} ;
  * this spec only verifies the controller wiring on top.
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class OrderControllerTest {
 
     private OrderRepository repo;

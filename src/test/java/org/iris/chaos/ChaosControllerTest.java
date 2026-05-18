@@ -30,6 +30,7 @@ import static org.mockito.Mockito.when;
  * cheaply and reliably.
  */
 @ExtendWith(MockitoExtension.class)
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class ChaosControllerTest {
 
     @Mock

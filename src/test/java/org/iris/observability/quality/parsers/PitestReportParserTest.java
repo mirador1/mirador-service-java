@@ -15,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * TIMED_OUT) across 3 mutators and 3 classes (one without a package
  * prefix to test the no-dot branch).
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class PitestReportParserTest {
 
     private final PitestReportParser parser = new PitestReportParser();

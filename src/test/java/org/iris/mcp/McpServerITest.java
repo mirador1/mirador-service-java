@@ -27,6 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * the callbacks invoke real services, results match the DTO shape".
  * That contract is exercised here.
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class McpServerITest extends AbstractIntegrationTest {
 
     /**

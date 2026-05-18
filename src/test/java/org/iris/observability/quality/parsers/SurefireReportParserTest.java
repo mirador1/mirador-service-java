@@ -20,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * <p>Fixture totals: 5 tests across 2 suites, 1 failure (BobTest.testFails)
  * → status FAILED. Total time 0.800s.
  */
+@SuppressWarnings("java:S5853")  // Multi-assertion chain refactor deferred ; current shape reads better when subject + N separate assertions.
 class SurefireReportParserTest {
 
     private final SurefireReportParser parser = new SurefireReportParser();
