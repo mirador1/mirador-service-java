@@ -124,9 +124,9 @@ class KafkaCustomerEventPublisherTest {
      * future; test asserts focus on the send() arguments.
      */
     private static SendResult<String, Object> stubSendResult() {
-        ProducerRecord<String, Object> record = new ProducerRecord<>(TOPIC, "key", new Object());
+        ProducerRecord<String, Object> rec = new ProducerRecord<>(TOPIC, "key", new Object());
         RecordMetadata meta = new RecordMetadata(new TopicPartition(TOPIC, 0), 0, 0, 0, 0, 0);
-        return new SendResult<>(record, meta);
+        return new SendResult<>(rec, meta);
     }
 
     /**
