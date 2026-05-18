@@ -27,6 +27,19 @@ section_preflight() {
     fi
   done
 
+  # GitHub mirror drift check (per ADR-0069 double-CI + 2026-05-14 audit).
+  # iris-7 mirrors GitLab to GitHub ; drift accumulates silently on force-
+  # pushes and manual main pushes. `github-mirror-sync.sh --check` exits 1
+  # if any of the 5 repos has drift — surface as a stability finding so
+  # the next tag has a clean mirror baseline.
+  if [[ -x "$SVC_DIR/infra/common/bin/ship/github-mirror-sync.sh" ]]; then
+    if "$SVC_DIR/infra/common/bin/ship/github-mirror-sync.sh" --check >/dev/null 2>&1; then
+      finding info "GitHub mirrors: all 5 in sync with GitLab"
+    else
+      finding warn "GitHub mirror drift — run \`infra/common/bin/ship/github-mirror-sync.sh\` to resync"
+    fi
+  fi
+
   # Docker disk pressure (per CLAUDE.md "Regular Docker cleanup").
   local docker_gb
   docker_gb=$(docker system df --format json 2>/dev/null \
